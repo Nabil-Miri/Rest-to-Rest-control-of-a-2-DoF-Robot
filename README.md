@@ -10,7 +10,7 @@ $$\begin{aligned}
 B(q)\ddot{q} + C(q, \dot{q})\dot{q} + g(q) &= u
 \end{aligned}$$
 
-in terms of the joint angles $$q = \begin{pmatrix} q_1 & q_2 \end{pmatrix} \in \mathbb{R}^2$$ and the input torques $$u = \begin{pmatrix} u_1 & u_2 \end{pmatrix} \in \mathbb{R}^2$$. The coefficient matrices are given by:
+The coefficient matrices are given by:
 
 
 $$
@@ -207,6 +207,7 @@ Sampling time of 0.05, 0.1, 0.5 were used along with 3 different integrators: rk
 
 
 ![Simulation Graphs using different integrators](Media/Crop_integrators.svg)
+
 *Figure 3: Simulation Graphs using different integrators*
 
 The results are very similar but we can notice the difference in the calcualation time where euler forward method is much faster the rk4.
@@ -223,6 +224,7 @@ The results are very similar but we can notice the difference in the calcualatio
 We can notice that the graphs for sampling times of 0.05 and 0.1 are very similar. Also, both are better than the 0.5 sampling time. But the catch is in the time needed to calculate the optimal solution as a sampling time of 0.05 is 12.6 sec which is x7 longer than a sampling time of 0.1 . Thus, maybe the resolution is much better with 0.05 but not needed in our case.
 ![Simulation Graphs using different sampling
 time](Media/Crop_sampling.svg)
+
 *Figure 4: Simulation Graphs using different sampling time*
 
 
@@ -231,6 +233,7 @@ time](Media/Crop_sampling.svg)
 The OCP used is OCP3 formulated in part a). The **min time** found is: **2.3631** sec
 
 ![Min Time Graphs](Media/min.png)
+
 *Figure 5: Min Time Graphs*
 
 We can notice that the output is similar to bang bang control which makes sense so that we can find the minimum time to reach the optimal solution.
@@ -247,12 +250,15 @@ The compromised OCP is the OCP4 found also in part a). Below some tests were don
 *Table3: Compromise between time and input cost*
 
 ![1000T+J](Media/image.png)
+
 *Figure 6: 1000T+J*
 
 ![100000T+J](Media/t2.png)
+
 *Figure 7: 100000T+J*
 
 ![10000000T+J](Media/T3.png)
+
 *Figure 8: 10000000T+J*
 
 # e) Model Predictive Control
@@ -288,9 +294,12 @@ Model Predictive Control (MPC) is a control strategy used in dynamical systems t
 constraints on inputs and states, and possibly disturbances or uncertainties to compute optimal control actions. By iteratively updating the control policy, MPC can adapt to changes in the system and external conditions, making it suitable for a wide range of applications including robotics, process control, and automotive systems.
 
 For the MPC controller, we use the same OCP as before but this time we input only the first optimal input to the system:
-$$\begin{aligned}
+
+$$
+\begin{aligned}
 u^*(\tau|t_k) \text{  for  } \tau \in [t_k, t_{k+1})
-\end{aligned}$$
+\end{aligned}
+$$
 
 ### 3) Assume incorrect parameters in the model, such as $b1 = 180\ kg\ m^2/rad$ and $b2 = 45 \ kg\ m^2/rad$. When/how would this happen in practice? Simulate the open loop and the closed loop system. Plot your results and describe the differences.
 
@@ -299,10 +308,12 @@ mismatched models. Only the Joint graph is shown for clearer results. The OCP is
 
 ![Comparing between the original and mismatched dynamics behaviour using
 optimal input](Media/diff.png)
+
 *Figure 9: Comparing between the original and mismatched dynamics behaviour using optimal input*
 
 ![Comparison between Open and Closed Loop when model is
 mismatched](Media/mismatch.png)
+
 *Figure 10: Comparison between Open and Closed Loop when model is mismatched*
 
 ### 4) Now assume an additive Gaussian measurement error; choose a meaningful value for the variance. Implement this situation and simulate your closed-loop system for the fixed end-time problem. What do you observe? Plot your results.
@@ -318,6 +329,7 @@ X0 = x(:,k) + \sqrt{\text{measurementNoiseVariance}} \times \text{randn}(\text{s
 $$
 
 ![MPC with Gaussian Noise](Media/gaussian.png)
+
 *Figure 11: MPC with Gaussian Noise*
 
 ### 5) Analyze the stability properties of the designed MPC controller.
