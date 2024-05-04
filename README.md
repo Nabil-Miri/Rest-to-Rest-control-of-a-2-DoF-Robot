@@ -158,7 +158,10 @@ Q=1e^2diag(\begin{bmatrix}1&1& 1& 1\end{bmatrix})  \quad\quad\quad\quad\quad R=1
 $$
 
 A terminal constraint could be added also as:
-$$x(t(2))= \begin{bmatrix}\pi/2 \\ 0 \\ 0 \\ 0\end{bmatrix}$$
+
+$$
+x(t(2))= \begin{bmatrix}\pi/2 \\\ 0 \\\ 0 \\\ 0\end{bmatrix}
+$$
 
 - OCP2: Quadratic Cost Function of inputs only: 
 
