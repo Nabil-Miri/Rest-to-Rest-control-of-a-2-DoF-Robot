@@ -14,15 +14,15 @@ The coefficient matrices are given by:
 
 
 $$
-B(q) = \begin{pmatrix} b_1 + b_2 \cos(q_2) & b_3 + b_4 \cos(q_2) \\\ b_3 + b_4 \cos(q_2) & b_5 \end{pmatrix} \in \mathbb{R}^{2 \times 2},
+B(q) = \begin{bmatrix} b_1 + b_2 \cos(q_2) & b_3 + b_4 \cos(q_2) \\\ b_3 + b_4 \cos(q_2) & b_5 \end{bmatrix} \in \mathbb{R}^{2 \times 2},
 $$
 
 $$
-C(q, \dot{q}) = -c_1 \sin(q_2) \begin{pmatrix} \dot{q}_2 & \dot{q}_1 + \dot{q}_2 \\\ -\dot{q}_1 & 0 \end{pmatrix} \in \mathbb{R}^{2 \times 2},
+C(q, \dot{q}) = -c_1 \sin(q_2) \begin{bmatrix} \dot{q}_2 & \dot{q}_1 + \dot{q}_2 \\\ -\dot{q}_1 & 0 \end{bmatrix} \in \mathbb{R}^{2 \times 2},
 $$
 
 $$
-g(q) = \begin{pmatrix} g_1 \cos(q_1) + g_2 \cos(q_1 + q_2) \\\ g_2 \cos(q_1 + q_2) \end{pmatrix} \in \mathbb{R}^{1 \times 2}.
+g(q) = \begin{bmatrix} g_1 \cos(q_1) + g_2 \cos(q_1 + q_2) \\\ g_2 \cos(q_1 + q_2) \end{bmatrix} \in \mathbb{R}^{1 \times 2}.
 $$
 
 $$q = \begin{pmatrix}
