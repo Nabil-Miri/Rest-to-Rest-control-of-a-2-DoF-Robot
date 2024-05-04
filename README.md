@@ -101,7 +101,7 @@ $$
 The $U$ vector should be expanded to become appropriate to the other matrices:
 
 $$
-U = \begin{bmatrix}0 \\u_1 \\0 \\u_2\end{bmatrix} \in \mathbb{R}^{4 \times 1}
+U = \begin{bmatrix}0 \\\ u_1 \\\ 0 \\\ u_2\end{bmatrix} \in \mathbb{R}^{4 \times 1}
 $$
 
 The new equation structure: $$eqn=B*Y+C*X+G==U$$ where the $X$ vector would be: 
@@ -222,8 +222,8 @@ The results are very similar but we can notice the difference in the calcualatio
 *Table2: Different sampling times using rk4*
 
 We can notice that the graphs for sampling times of 0.05 and 0.1 are very similar. Also, both are better than the 0.5 sampling time. But the catch is in the time needed to calculate the optimal solution as a sampling time of 0.05 is 12.6 sec which is x7 longer than a sampling time of 0.1 . Thus, maybe the resolution is much better with 0.05 but not needed in our case.
-![Simulation Graphs using different sampling
-time](Media/Crop_sampling.svg)
+
+![Simulation Graphs using different sampling time](Media/Crop_sampling.svg)
 
 *Figure 4: Simulation Graphs using different sampling time*
 
