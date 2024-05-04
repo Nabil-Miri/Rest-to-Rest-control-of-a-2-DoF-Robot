@@ -10,7 +10,8 @@ $$\begin{aligned}
 B(q)\ddot{q} + C(q, \dot{q})\dot{q} + g(q) &= u
 \end{aligned}$$
 
-in terms of the joint angles \(q = \begin{pmatrix} q_1 & q_2 \end{pmatrix} \in \mathbb{R}^2\) and the input torques \(u = \begin{pmatrix} u_1 & u_2 \end{pmatrix} \in \mathbb{R}^2\). The coefficient matrices are given by:
+In terms of the joint angles \(q = \begin{pmatrix} q_1 & q_2 \end{pmatrix}\) and the input torques \(u = \begin{pmatrix} u_1 & u_2 \end{pmatrix}\), the coefficient matrices are given by:
+
 
 $$
 B(q) = \begin{pmatrix} b_1 + b_2 \cos(q_2) & b_3 + b_4 \cos(q_2) \\ b_3 + b_4 \cos(q_2) & b_5 \end{pmatrix} \in \mathbb{R}^{2 \times 2},
