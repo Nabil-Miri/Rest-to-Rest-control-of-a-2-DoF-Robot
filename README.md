@@ -10,7 +10,7 @@ $$\begin{aligned}
 B(q)\ddot{q} + C(q, \dot{q})\dot{q} + g(q) &= u
 \end{aligned}$$
 
-In terms of the joint angles \(q = \begin{pmatrix} q_1 & q_2 \end{pmatrix}\) and the input torques \(u = \begin{pmatrix} u_1 & u_2 \end{pmatrix}\), the coefficient matrices are given by:
+The coefficient matrices are given by:
 
 
 $$
@@ -38,7 +38,6 @@ u_2
     <img src="Media/Figure1.png" alt="2-DoF robot." width="200">
     <p style="text-align: center;"><em>Figure 1: 2-DoF robot.</em></p>
 </div>
-
 <div style="display: inline-block;">
     <img src="Media/Figure2.png" alt="Parameters for system (1)." width="300">
     <p style="text-align: center;"><em>Figure 2: Parameters for system (1).</em></p>
