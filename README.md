@@ -10,7 +10,7 @@ $$\begin{aligned}
 B(q)\ddot{q} + C(q, \dot{q})\dot{q} + g(q) &= u
 \end{aligned}$$
 
-The coefficient matrices are given by:
+in terms of the joint angles $$q = \begin{pmatrix} q_1 & q_2 \end{pmatrix} \in \mathbb{R}^2$$ and the input torques $$u = \begin{pmatrix} u_1 & u_2 \end{pmatrix} \in \mathbb{R}^2$$. The coefficient matrices are given by:
 
 
 $$
@@ -18,11 +18,11 @@ B(q) = \begin{pmatrix} b_1 + b_2 \cos(q_2) & b_3 + b_4 \cos(q_2) \\\ b_3 + b_4 \
 $$
 
 $$
-C(q, \dot{q}) = -c_1 \sin(q_2) \begin{pmatrix} \dot{q}_2 & \dot{q}_1 + \dot{q}_2 \\ -\dot{q}_1 & 0 \end{pmatrix} \in \mathbb{R}^{2 \times 2},
+C(q, \dot{q}) = -c_1 \sin(q_2) \begin{pmatrix} \dot{q}_2 & \dot{q}_1 + \dot{q}_2 \\\ -\dot{q}_1 & 0 \end{pmatrix} \in \mathbb{R}^{2 \times 2},
 $$
 
 $$
-g(q) = \begin{pmatrix} g_1 \cos(q_1) + g_2 \cos(q_1 + q_2) \\ g_2 \cos(q_1 + q_2) \end{pmatrix} \in \mathbb{R}^{1 \times 2}.
+g(q) = \begin{pmatrix} g_1 \cos(q_1) + g_2 \cos(q_1 + q_2) \\\ g_2 \cos(q_1 + q_2) \end{pmatrix} \in \mathbb{R}^{1 \times 2}.
 $$
 
 $$q = \begin{pmatrix}
@@ -310,11 +310,11 @@ mismatched](Media/mismatch.png)
 Variance is implemented using the below formula and is added to the initial condition of the input X variable at the start of the MPC loop so that it represent error in the measurement:
 
 $$
-\text{measurement\_noise\_variance} = 0.01 \\
+\text{measurementNoiseVariance} = 0.01
 $$
 
 $$
-X0 = x(:,k) + \sqrt{\text{measurement\_noise\_variance}} \times \text{randn}(\text{size}(x(:, k)))
+X0 = x(:,k) + \sqrt{\text{measurementNoiseVariance}} \times \text{randn}(\text{size}(x(:, k)))
 $$
 
 ![MPC with Gaussian Noise](Media/gaussian.png)
