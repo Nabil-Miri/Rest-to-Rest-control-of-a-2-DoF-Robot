@@ -179,7 +179,7 @@ ylabel('Control (Nm)');
 legend('0.05 u1', '0.05 u2', '0.1 u1','0.1 u2', '0.5 u1', '0.5 u2', 'Control limits');
 %%
 % % Animate the robot arm
-animate_robot_arm(xSS_0_1(1,:), xSS_0_1(2,:));
+animate_robot_arm(xSS_0_1(1,:), xSS_0_1(2,:), obstacle_pos);
 %% 
 % With terminal penalty
 
@@ -331,8 +331,6 @@ c = linspace(1, 10, length(x));  % You can use any variable for gradient color
 scatter(x, y, 20, c, 'filled')
 colormap('jet'); % You can choose other colormaps, e.g., 'parula', 'hot', etc.
 title('x-y Plane');
-xlabel('x');
-ylabel('y');
 %% MPC LOOP:
 
 [fx, fu, xeco, ueco] = MPCloop(U,X,X0,ocp,@(t,x,u)dynamicsfun_mismatch(t,x,u),Ts,6,[-5; 0; -4; 0],[0; 0]);
@@ -701,7 +699,7 @@ scatter(x, y, 20, c, 'filled')
 colormap('jet'); % You can choose other colormaps, e.g., 'parula', 'hot', etc.
 title('x-y Plane');
 %%
-function animate_robot_arm(q1, q2)
+function animate_robot_arm(q1, q2, obstacle_pos)
     % Link lengths
     l1 = 0.5; % Length of the first link
     l2 = 0.5; % Length of the second link
@@ -720,6 +718,9 @@ function animate_robot_arm(q1, q2)
 
     % Set axis limits based on the link lengths
     axis([-l1-l2, l1+l2, -l1-l2, l1+l2]);
+
+    % Plot the obstacle
+    plot(obstacle_pos(1), obstacle_pos(2), 'kx', 'MarkerSize', 10, 'LineWidth', 2);
 
     % Animate the robot arm
     for i = 1:length(q1)
