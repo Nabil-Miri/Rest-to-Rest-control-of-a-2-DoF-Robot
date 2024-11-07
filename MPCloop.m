@@ -18,12 +18,23 @@ function [fx, fu, x,u] = MPCloop(U,X,X0,ocp,myfun,dt,tf,xinit,uinit)
     Usol        =   repmat(uinit,1,Nmpc);
     measurement_noise_variance = 0.01;
 
+    % Define obstacle position and size
+    obstacle_position = [1; 1]; % Example position
+    obstacle_radius = 0.5; % Example radius
+
     for k = 1:N
         % set current state
         ocp.set_value(X0, x(:,k) ) % + sqrt(measurement_noise_variance) * randn(size(x(:, k)))); 
         % initialize OCP
         ocp.set_initial(X,Xsol);
         ocp.set_initial(U,Usol);
+        
+        % Add obstacle constraints
+        for i = 1:Nmpc+1
+            distance_to_obstacle = norm(Xsol(1:2, i) - obstacle_position);
+            ocp.subject_to(distance_to_obstacle >= obstacle_radius);
+        end
+        
         % resolve OCP
         sol = ocp.solve();
         Xsol    =   sol.value(X);
