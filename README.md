@@ -29,7 +29,7 @@ B(q) = \begin{bmatrix} b_1 + b_2 \cos(q_2) & b_3 + b_4 \cos(q_2) \\\ b_3 + b_4 \
 $$
 
 $$
-C(q, \dot{q}) = -c_1 \sin(q_2) \begin{bmatrix} \dot{q}_2 & \dot{q}_1 + \dot{q}_2 \\\ -\dot{q}_1 & 0 \end{bmatrix} \in \mathbb{R}^{2 \times 2},
+C(q, \dot{q}) = -c_1 \sin(q_2) \begin{bmatrix} \dot{q}_2 & \dot{q}_1 + \dot{q}_2 \\\ -\dot{q}_1 & 0 \end{bmatrix} \in \mathbb{R^{2 \times 2},
 $$
 
 $$
@@ -349,3 +349,15 @@ $$
 ### 5) Analyze the stability properties of the designed MPC controller.
 
 Analyzing the stability properties of the MPC controller involves examining how well it performs under various conditions, including disturbances, noise, and model inaccuracies. From Figures 11 and 12, it's evident that the MPC model demonstrates good performance, effectively driving the system towards the optimal values despite potential challenges. Moreover, the length of the horizon in MPC significantly influences the controller's performance and computational requirements. A shorter horizon length leads to faster computation times and more localized control actions, focusing on immediate future states. However, it may limit the controller's ability to anticipate future disturbances or changes in system dynamics. On the other hand, a longer horizon length increases computational complexity but enhances predictive capability, allowing the controller to consider a broader range of future states.
+
+### 6) Addition of an Obstacle Object Near the Robot
+
+In this project, we have added an obstacle object near the robot as a constraint. This addition is crucial for ensuring that the robot avoids collisions with the obstacle while performing its tasks. The obstacle is represented by a fixed position in the workspace, and the robot must maintain a safe distance from it during its motion.
+
+### 7) New Constraint in the OCP Formulation
+
+To incorporate the obstacle avoidance constraint in the Optimal Control Problem (OCP) formulation, we have introduced a new constraint that calculates the distance between the robot and the obstacle. The robot's position is determined based on its joint angles, and the distance to the obstacle is computed accordingly. The constraint ensures that the robot maintains a minimum distance from the obstacle at all times.
+
+### 8) Updated Modeling Section to Include Obstacle Avoidance
+
+The modeling section has been updated to include the obstacle avoidance mechanism. The robot's dynamics now account for the presence of the obstacle, and the control strategy is designed to ensure that the robot avoids collisions while reaching its target position. The obstacle avoidance is implemented by calculating a repulsive force that pushes the robot away from the obstacle when it gets too close. This force is integrated into the robot's control inputs to ensure safe and efficient motion.

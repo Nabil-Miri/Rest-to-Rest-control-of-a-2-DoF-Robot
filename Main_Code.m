@@ -48,6 +48,9 @@ xmin= -xmax; % [q1 q_dot1 q2 q_dot2]
 umax= [1000; 1000]; % [u1 u2]
 umin= -umax; % [u1 u2]
 
+% Obstacle position
+obstacle_pos = [0.5; 0.5]; % [x, y]
+
 %% set up optimal control problem:
 ocp = casadi.Opti();
 
@@ -71,6 +74,14 @@ for i = 1:Nmpc
 
     % add constraint
     ocp.subject_to(X(:,i+1) == x_next);
+
+    % calculate distance to obstacle
+    x_pos = l1*cos(X(1,i)) + l2*cos(X(1,i) + X(3,i));
+    y_pos = l1*sin(X(1,i)) + l2*sin(X(1,i) + X(3,i));
+    distance_to_obstacle = sqrt((x_pos - obstacle_pos(1))^2 + (y_pos - obstacle_pos(2))^2);
+
+    % add obstacle avoidance constraint
+    ocp.subject_to(distance_to_obstacle >= 0.1); % minimum distance to obstacle
 
     % construct an objective
     J = J + (X(:,i+1) - xend)' * Q * (X(:,i+1) - xend) + U(:,i)' * R * U(:,i);
@@ -211,6 +222,9 @@ xmin= -xmax; % [q1 q_dot1 q2 q_dot2]
 umax= [1000; 1000]; % [u1 u2]
 umin= -umax; % [u1 u2]
 
+% Obstacle position
+obstacle_pos = [0.5; 0.5]; % [x, y]
+
 %% set up optimal control problem:
 ocp = casadi.Opti();
 
@@ -234,6 +248,14 @@ for i = 1:Nmpc
 
     % add constraint
     ocp.subject_to(X(:,i+1) == x_next);
+
+    % calculate distance to obstacle
+    x_pos = l1*cos(X(1,i)) + l2*cos(X(1,i) + X(3,i));
+    y_pos = l1*sin(X(1,i)) + l2*sin(X(1,i) + X(3,i));
+    distance_to_obstacle = sqrt((x_pos - obstacle_pos(1))^2 + (y_pos - obstacle_pos(2))^2);
+
+    % add obstacle avoidance constraint
+    ocp.subject_to(distance_to_obstacle >= 0.1); % minimum distance to obstacle
 
     % construct an objective
     J = J + (X(:,i+1) - xend)' * Q * (X(:,i+1) - xend) + U(:,i)' * R * U(:,i);
@@ -526,6 +548,9 @@ xmin= -xmax; % [q1 q_dot1 q2 q_dot2]
 umax= [1000; 1000]; % [u1 u2]
 umin= -umax; % [u1 u2]
 
+% Obstacle position
+obstacle_pos = [0.5; 0.5]; % [x, y]
+
 %% set up optimal control problem:
 ocp = casadi.Opti();
 
@@ -549,6 +574,14 @@ for i = 1:Nmpc
 
     % add constraint
     ocp.subject_to(X(:,i+1) == x_next);
+
+    % calculate distance to obstacle
+    x_pos = l1*cos(X(1,i)) + l2*cos(X(1,i) + X(3,i));
+    y_pos = l1*sin(X(1,i)) + l2*sin(X(1,i) + X(3,i));
+    distance_to_obstacle = sqrt((x_pos - obstacle_pos(1))^2 + (y_pos - obstacle_pos(2))^2);
+
+    % add obstacle avoidance constraint
+    ocp.subject_to(distance_to_obstacle >= 0.1); % minimum distance to obstacle
 
     % construct an objective
     %J = J + U(:,i)' * R * U(:,i);
